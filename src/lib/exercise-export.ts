@@ -4,7 +4,7 @@
 import {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   Header, Footer, PageNumber, AlignmentType, HeadingLevel, WidthType,
-  BorderStyle, BorderStyle as BS, ShadingType, PageOrientation, PageBreak,
+  BorderStyle as BS, ShadingType, PageOrientation, PageBreak, TableLayoutType,
 } from 'docx'
 import { getExerciseExportInfo, getFillBefore } from './exercise-export-data'
 
@@ -105,54 +105,21 @@ function pbPara(): Paragraph {
   })
 }
 
-// 通用表格
-function makeTable(rows: TableRow[]): Table {
-  return new Table({
-    width: { size: 100, type: WidthType.PERCENTAGE },
-    borders: {
-      top: { style: BS.SINGLE, size: 6, color: "333333" },
-      bottom: { style: BS.SINGLE, size: 6, color: "333333" },
-      left: { style: BS.SINGLE, size: 4, color: "888888" },
-      right: { style: BS.SINGLE, size: 4, color: "888888" },
-      insideHorizontal: { style: BS.SINGLE, size: 1, color: "BBBBBB" },
-      insideVertical: { style: BS.SINGLE, size: 1, color: "BBBBBB" },
-    },
-    rows: rows,
-  })
+// 无边框（用于纯排版表格）。Word 中 NIL 比 NONE 优先级高，能覆盖表格级默认边框。
+const NO_BORDER = { style: BS.NIL, size: 0, color: "auto" } as const
+const NO_TABLE_BORDERS = {
+  top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER,
+  insideHorizontal: NO_BORDER, insideVertical: NO_BORDER,
+}
+const NO_CELL_BORDERS = {
+  top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER,
 }
 
-function mkHeaderCell(text: string, width: number, align = AlignmentType.CENTER): TableCell {
+// 答案解析单元格；columnSpan 用于与选项行合并成同一张表
+function answerCell(answer: string, analysis: string, columnSpan: number): TableCell {
   return new TableCell({
-    width: { size: width, type: WidthType.PERCENTAGE },
-    shading: { type: ShadingType.CLEAR, fill: C.headerBg },
-    margins: { top: 60, bottom: 60, left: 100, right: 100 },
-    children: [new Paragraph({
-      alignment: align,
-      children: [new TextRun({ text, bold: true, size: 21, font: FONT_HEI, color: C.title })],
-    })],
-  })
-}
-
-function mkDataCell(text: string, opts: any = {}): TableCell {
-  return new TableCell({
-    width: { size: opts.width || 25, type: WidthType.PERCENTAGE },
-    margins: { top: 50, bottom: 50, left: 100, right: 100 },
-    children: [new Paragraph({
-      alignment: opts.align || AlignmentType.LEFT,
-      children: [new TextRun({
-        text: String(text), size: opts.size || 21,
-        bold: opts.bold || false,
-        color: opts.color || C.body,
-        font: FONT,
-      })],
-    })],
-  })
-}
-
-// 答案解析块
-function answerBlock(answer: string, analysis: string): Table {
-  const cell = new TableCell({
     width: { size: 100, type: WidthType.PERCENTAGE },
+    columnSpan,
     margins: { top: 100, bottom: 100, left: 160, right: 160 },
     shading: { type: ShadingType.CLEAR, fill: "F7F9FC" },
     borders: {
@@ -172,71 +139,64 @@ function answerBlock(answer: string, analysis: string): Table {
       ], { before: 0, after: 0 }),
     ],
   })
+}
+
+function answerBlock(answer: string, analysis: string): Table {
   return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
-    rows: [new TableRow({ cantSplit: true, children: [cell] })],
+    borders: NO_TABLE_BORDERS,
+    rows: [new TableRow({ cantSplit: true, children: [answerCell(answer, analysis, 1)] })],
   })
 }
 
-// 选择题选项表（4 列）
-function mcOptionsTable(options: string[]): Table {
-  const cells = options.map((opt, i) =>
-    new TableCell({
-      width: { size: 25, type: WidthType.PERCENTAGE },
-      borders: {
-        top: { style: BS.NONE }, bottom: { style: BS.NONE },
-        left: { style: BS.NONE }, right: { style: BS.NONE },
-      },
-      margins: { top: 30, bottom: 30, left: 80, right: 80 },
-      children: [new Paragraph({
-        spacing: { before: 0, after: 0, line: 312 },
-        children: [new TextRun({
-          text: `${String.fromCharCode(65 + i)}. ${opt}`,
-          size: 22, font: FONT,
-        })],
-      })],
-    })
-  )
-  return new Table({
-    width: { size: 100, type: WidthType.PERCENTAGE },
-    rows: [new TableRow({ cantSplit: true, children: cells })],
-  })
-}
+// 选择题：选项行与答案解析行放在同一张表里。
+// 相邻的独立表格会被 Word 合并，导致答案块缩进到某一列，因此不能再拆成两张表。
+// 固定列宽 + 固定布局，保证多行选项在 Word 中左右严格对齐。
+const CONTENT_WIDTH = 9638 // A4 宽 11906 减去左右页边距 1134×2（twips）
 
-// 选择题选项表（2 列）
-function mcOptions2col(options: string[]): Table {
-  const row1 = options.slice(0, 2)
-  const row2 = options.slice(2, 4)
-  const mkRow = (opts: string[], startIdx: number) => new TableRow({
-    cantSplit: true,
-    children: opts.map((opt, i) =>
-      new TableCell({
-        width: { size: 50, type: WidthType.PERCENTAGE },
-        borders: {
-          top: { style: BS.NONE }, bottom: { style: BS.NONE },
-          left: { style: BS.NONE }, right: { style: BS.NONE },
-        },
-        margins: { top: 30, bottom: 30, left: 80, right: 80 },
-        children: [new Paragraph({
-          spacing: { before: 0, after: 0, line: 312 },
-          children: [new TextRun({
-            text: `${String.fromCharCode(65 + startIdx + i)}. ${opt}`,
-            size: 22, font: FONT,
+function mcQuestionTable(options: string[], answer?: string, analysis?: string): Table {
+  const twoCol = Math.max(...options.map(option => option.length)) > 8
+  const columns = twoCol ? Math.min(2, options.length) : Math.min(4, options.length)
+  const columnWidth = Math.floor(CONTENT_WIDTH / columns)
+  const rows: TableRow[] = []
+
+  for (let start = 0; start < options.length; start += columns) {
+    rows.push(new TableRow({
+      cantSplit: true,
+      keepNext: Boolean(answer),
+      children: options.slice(start, start + columns).map((opt, i) =>
+        new TableCell({
+          width: { size: columnWidth, type: WidthType.DXA },
+          borders: NO_CELL_BORDERS,
+          margins: { top: 30, bottom: 30, left: 80, right: 80 },
+          children: [new Paragraph({
+            spacing: { before: 0, after: 0, line: 312 },
+            children: [new TextRun({
+              text: `${String.fromCharCode(65 + start + i)}. ${opt}`,
+              size: 22, font: FONT,
+            })],
           })],
-        })],
-      })
-    ),
-  })
+        })
+      ),
+    }))
+  }
+
+  if (answer) rows.push(new TableRow({ cantSplit: true, children: [answerCell(answer, analysis || '', columns)] }))
+
   return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
-    rows: [mkRow(row1, 0), mkRow(row2, 2)],
+    columnWidths: Array.from({ length: columns }, () => columnWidth),
+    layout: TableLayoutType.FIXED,
+    borders: NO_TABLE_BORDERS,
+    rows,
   })
 }
 
-// 填空题段落
+// 填空题段落；答案版让题干与紧随其后的答案解析保持在同一页
 function fillBlankP(num: number, before: string, after: string, withAnswers: boolean, answer: string): Paragraph {
   return new Paragraph({
     spacing: { before: 160, after: 80, line: 312 },
+    keepNext: withAnswers,
     children: [
       new TextRun({ text: `${num}. `, bold: true, size: 22, font: FONT }),
       new TextRun({ text: getFillBefore({ before, answer }, withAnswers), size: 22, font: FONT }),
@@ -248,10 +208,11 @@ function fillBlankP(num: number, before: string, after: string, withAnswers: boo
   })
 }
 
-// 题目段落（带题号+题干）
+// 题目段落（带题号+题干）；与选项表保持同页
 function questionP(num: number, text: string): Paragraph {
   return new Paragraph({
     spacing: { before: 160, after: 80, line: 312 },
+    keepNext: true,
     children: [
       new TextRun({ text: `${num}. `, bold: true, size: 22, font: FONT }),
       new TextRun({ text, size: 22, font: FONT }),
@@ -347,10 +308,6 @@ export async function generateExerciseDocx(
   if (!withAnswers) {
     const infoCell = (text: string, align: (typeof AlignmentType)[keyof typeof AlignmentType] = AlignmentType.CENTER) => new TableCell({
       width: { size: 33, type: WidthType.PERCENTAGE },
-      borders: {
-        top: { style: BS.NONE }, bottom: { style: BS.NONE },
-        left: { style: BS.NONE }, right: { style: BS.NONE },
-      },
       margins: { top: 30, bottom: 30, left: 80, right: 80 },
       children: [new Paragraph({
         alignment: align, spacing: { before: 0, after: 0, line: 312 },
@@ -394,20 +351,16 @@ export async function generateExerciseDocx(
       unit.questions.forEach((q, idx) => {
         const qNum = idx + 1
         if (q.type === '选择' && q.options) {
-          // 选择题
+          // 选择题：选项行和答案解析行在同一张无边框表内，避免 Word 合并相邻表格导致错位
           allChildren.push(questionP(qNum, q.stem || ''))
-          const maxLen = Math.max(...q.options.map(o => o.length))
-          if (maxLen <= 8) {
-            allChildren.push(mcOptionsTable(q.options))
-          } else {
-            allChildren.push(mcOptions2col(q.options))
-          }
-          // 答案解析（仅含答案版）
-          if (withAnswers && q.answer) {
-            const ansLetter = q.answer
-            const ansText = q.options[ansLetter.charCodeAt(0) - 65]
-            allChildren.push(answerBlock(`${ansLetter}. ${ansText}`, q.analysis))
-          }
+          const showAnswer = withAnswers && Boolean(q.answer)
+          const ansLetter = q.answer
+          const ansText = q.options[ansLetter.charCodeAt(0) - 65]
+          allChildren.push(mcQuestionTable(
+            q.options,
+            showAnswer ? `${ansLetter}. ${ansText}` : undefined,
+            q.analysis,
+          ))
         } else {
           // 填空题
           allChildren.push(fillBlankP(qNum, q.before || '', q.after || '', withAnswers, q.answer))

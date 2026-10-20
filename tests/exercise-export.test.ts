@@ -42,6 +42,23 @@ test('Word 空范围包含全部；答案版包含填空答案和解析', async 
   assert.match(xml, /共 3 题/)
 })
 
+test('Word 答案版选择题：选项与答案同表且不留边框，避免 Word 合并相邻表格导致错位', async () => {
+  const xml = await wordXml(true, ['g4up'])
+  assert.doesNotMatch(xml, /<\/w:tbl><w:tbl>/, '相邻表格会被 Word 合并，答案块会缩进到某一列')
+  const tables = xml.match(/<w:tbl>[\s\S]*?<\/w:tbl>/g) || []
+  const optionTable = tables.find(table => table.includes('A. APPLE'))
+  assert.ok(optionTable, '应生成选项表')
+  assert.match(optionTable!, /<w:tblBorders><w:top w:val="nil"/, '选项表必须是显式无边框')
+  assert.match(optionTable!, /<w:tcPr>[\s\S]*?<w:gridSpan w:val="\d+"\/>[\s\S]*?<w:t xml:space="preserve">【答案】<\/w:t>/, '答案必须在同一张表中跨列占满整行')
+})
+
+test('Word 答案版题干与解析保持同页（keepNext）', async () => {
+  const xml = await wordXml(true, ['g4up'])
+  const questionParagraph = xml.match(/<w:p>(?:(?!<\/w:p>)[\s\S])*?PICK_APPLE[\s\S]*?<\/w:p>/)
+  assert.ok(questionParagraph, '应包含题干段落')
+  assert.match(questionParagraph![0], /<w:keepNext\/>/, '答案版题干需与选项答案保持同页')
+})
+
 test('含答案填空去掉已有首字母提示，无答案版保留提示字母', async () => {
   const { createExercisePdfDefinition } = await import('../src/lib/exercise-pdf')
   const prefixGrades: ExerciseGrade[] = [{ id: 'prefix', name: '填空测试', version: '测试', units: [{
