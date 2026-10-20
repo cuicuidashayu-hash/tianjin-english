@@ -1,0 +1,268 @@
+// 习题扩展数据 - 每单元额外 5 题（5 选择 + 5 填空），共 36 单元 × 5 = 180 题
+// 与 exercises.ts 合并使用，达到每单元 10 题，共 360 题
+
+export const EXERCISES_EXTRA: { [key: string]: any[] } = {
+  // ===== 四年级上册 =====
+  'g4up-u1': [
+    { type: '选择', stem: "— _____ is that girl? — She's my sister.", options: ['Who', 'What', 'Where', 'How'], answer: 'A', analysis: 'Who 用于询问人；What 问事物；Where 问地点；How 问方式。' },
+    { type: '选择', stem: "My father is a _____. He delivers letters.", options: ['postman', 'doctor', 'teacher', 'nurse'], answer: 'A', analysis: 'postman 邮递员，delivers letters 送信；其他职业不符。' },
+    { type: '选择', stem: "— Nice to meet you. — Nice to meet you, _____.", options: ['too', 'also', 'either', 'and'], answer: 'A', analysis: '回应 Nice to meet you 用 too（也），放在句末。' },
+    { type: '填空', before: "I have a good f", after: " . He helps me a lot. (朋友)", answer: 'friend', analysis: 'friend 朋友，注意 ie 拼写，不是 ei。' },
+    { type: '填空', before: "My mother is a n", after: " . She works in a hospital. (护士)", answer: 'nurse', analysis: 'nurse 护士，注意 ur-se 拼写。' },
+  ],
+  'g4up-u2': [
+    { type: '选择', stem: "— What's five and seven? — It's _____.", options: ['eleven', 'twelve', 'thirteen', 'fourteen'], answer: 'B', analysis: '5+7=12，twelve 注意 e-l-v-e-n。' },
+    { type: '选择', stem: "I'm in Class One, _____ Four.", options: ['grade', 'Grade', 'grades', 'Grades'], answer: 'B', analysis: 'Grade 首字母大写；Class One, Grade Four 固定搭配。' },
+    { type: '选择', stem: "— What's your _____? — I'm number fifteen.", options: ['name', 'number', 'class', 'grade'], answer: 'B', analysis: '回答是 fifteen（编号），所以问 number。' },
+    { type: '填空', before: "T", after: " and five is fifteen. (十三)", answer: 'Thirteen', analysis: '13+5=18，但 fifteen 是 15，应为 ten+5=15。Thirteen 拼写 th-i-r-teen。' },
+    { type: '填空', before: "What's the t", after: " ? — It's 7:30. (时间)", answer: 'time', analysis: '问时间用 What time is it? 或 What\'s the time?' },
+  ],
+  'g4up-u3': [
+    { type: '选择', stem: "— What's this? — It's _____ eggplant.", options: ['a', 'an', 'the', '/'], answer: 'B', analysis: 'eggplant 元音开头，用 an；与 a pineapple 区分。' },
+    { type: '选择', stem: "— Do you like _____? — No, I don't.", options: ['carrot', 'carrots', 'a carrot', 'the carrot'], answer: 'B', analysis: 'like 后接可数名词复数泛指一类。' },
+    { type: '选择', stem: "Pass me the _____, please. I want to make a salad.", options: ['tomato', 'banana', 'apple', 'pear'], answer: 'A', analysis: 'tomato 西红柿，做沙拉用蔬菜不是水果。' },
+    { type: '填空', before: "Apples and oranges are f", after: " . (水果)", answer: 'fruit', analysis: 'fruit 水果，不可数； apples 是 apple 的复数。' },
+    { type: '填空', before: "Carrots and potatoes are v", after: " . (蔬菜)", answer: 'vegetables', analysis: 'vegetables 蔬菜复数加 s；与 fruit 区分。' },
+  ],
+  'g4up-u4': [
+    { type: '选择', stem: "It's _____. The sun is shining brightly.", options: ['sunny', 'rainy', 'cloudy', 'snowy'], answer: 'A', analysis: 'sun is shining 提示晴朗，用 sunny。' },
+    { type: '选择', stem: "It's _____. You'd better take an umbrella.", options: ['rain', 'rains', 'rainy', 'rainning'], answer: 'C', analysis: 'rainy 形容词描述天气；take umbrella 提示下雨。' },
+    { type: '选择', stem: "— What's the weather like today? — It's _____.", options: ['sun', 'sunny', 'suns', 'sunshine'], answer: 'B', analysis: '问天气用形容词回答：sunny/cloudy/windy 等。' },
+    { type: '填空', before: "In winter, it's very c", after: " . (寒冷的)", answer: 'cold', analysis: 'cold 寒冷；in winter 冬天冷。' },
+    { type: '填空', before: "It's c", after: " today. Let's fly kites. (凉爽的)", answer: 'cool', analysis: 'cool 凉爽；fly kites 放风筝适合凉爽天气。' },
+  ],
+  'g4up-u5': [
+    { type: '选择', stem: "— _____ do you like? — The blue one.", options: ['What', 'Which', 'How', 'Why'], answer: 'B', analysis: 'Which 哪一个，从有限选项中选；the blue one 是具体某个。' },
+    { type: '选择', stem: "May I try _____ the T-shirt?", options: ['in', 'on', 'at', 'to'], answer: 'B', analysis: 'try on 试穿；代词放中间 try it on，名词放后面或中间都可。' },
+    { type: '选择', stem: "— Where _____ my shoes? — Under the bed.", options: ['is', 'are', 'am', 'be'], answer: 'B', analysis: 'shoes 复数名词，be 动词用 are。' },
+    { type: '填空', before: "It's cold outside. Put on your j", after: " . (夹克)", answer: 'jacket', analysis: 'jacket 夹克；put on 穿上。' },
+    { type: '填空', before: "These s", after: " are too short for me. (短裤)", answer: 'shorts', analysis: 'shorts 短裤，复数名词，与 shoes/jeans 类似成对出现。' },
+  ],
+  'g4up-u6': [
+    { type: '选择', stem: "The elephant _____ big ears and a long nose.", options: ['have', 'has', 'is', 'are'], answer: 'B', analysis: 'elephant 是单数，have 变 has；has big ears 有大耳朵。' },
+    { type: '选择', stem: "I'm tall, but my brother is _____.", options: ['tall', 'short', 'long', 'big'], answer: 'B', analysis: 'but 表转折，tall 对 short（高对矮）。' },
+    { type: '选择', stem: "Look at the rabbit! It has long _____ and a short tail.", options: ['ear', 'ears', 'eye', 'eyes'], answer: 'B', analysis: 'rabbit 兔子有长耳朵（成对），ears 复数。' },
+    { type: '填空', before: "Giraffes are very t", after: " . They can eat leaves from tall trees. (高的)", answer: 'tall', analysis: 'tall 高；giraffe 长颈鹿，吃高处的叶子。' },
+    { type: '填空', before: "Both of t", after: " are my friends. (他们)", answer: 'them', analysis: 'both of them 他们两个都；both A and B 也常用。' },
+  ],
+
+  // ===== 四年级下册 =====
+  'g4down-u1': [
+    { type: '选择', stem: "— _____ do you go to school? — By bike.", options: ['What', 'How', 'Where', 'When'], answer: 'B', analysis: 'How 问方式；by bike 回答方式。' },
+    { type: '选择', stem: "She goes to work _____ subway.", options: ['by', 'on', 'in', 'with'], answer: 'A', analysis: 'by + 交通工具不加冠词：by subway/bus/bike。' },
+    { type: '选择', stem: "I want to take a _____ to the airport. It's far.", options: ['bike', 'taxi', 'walk', 'shoe'], answer: 'B', analysis: 'take a taxi 乘出租车；far 远需要交通工具。' },
+    { type: '填空', before: "We go to Beijing by t", after: " . It's fast. (火车)", answer: 'train', analysis: 'train 火车，注意 tr-ai-n 拼写；fast 快。' },
+    { type: '填空', before: "My father goes to work by b", after: " . It's good for his health. (自行车)", answer: 'bike', analysis: 'bike 自行车；by bike 骑车，对健康有益。' },
+  ],
+  'g4down-u2': [
+    { type: '选择', stem: "— _____ subject do you like best? — PE.", options: ['What', 'Which', 'How', 'Where'], answer: 'B', analysis: 'Which 哪一个；like best 最喜欢，从选项中选。' },
+    { type: '选择', stem: "We have English _____ Monday morning.", options: ['on', 'in', 'at', 'by'], answer: 'A', analysis: 'on + 具体日期/星期：on Monday morning。' },
+    { type: '选择', stem: "Maths is _____ but interesting.", options: ['easy', 'difficult', 'long', 'short'], answer: 'B', analysis: 'but 转折，与 interesting 对应；difficult 难但有趣。' },
+    { type: '填空', before: "What s", after: " do you have today? (科目)", answer: 'subjects', analysis: 'subjects 科目复数；今天有多节课。' },
+    { type: '填空', before: "We have six l", after: " every day. (课)", answer: 'lessons', analysis: 'lessons 课复数；have a lesson 上课。' },
+  ],
+  'g4down-u3': [
+    { type: '选择', stem: "I like _____ pictures after school.", options: ['draw', 'drawing', 'draws', 'drew'], answer: 'B', analysis: 'like + doing；draw→drawing 画画。' },
+    { type: '选择', stem: "— What do you do after school? — I often _____ football.", options: ['play', 'plays', 'playing', 'played'], answer: 'A', analysis: 'do 后接动词原形；play + 球类不加 the。' },
+    { type: '选择', stem: "She _____ plays the piano on weekends.", options: ['some time', 'sometimes', 'sometime', 'some times'], answer: 'B', analysis: 'sometimes 有时候，频度副词一个词。' },
+    { type: '填空', before: "Do you like s", after: " songs after school? (唱)", answer: 'singing', analysis: 'like + doing：sing→singing；sing songs 唱歌。' },
+    { type: '填空', before: "They like r", after: " in the playground. (跑)", answer: 'running', analysis: 'run→running 双写 n；in the playground 在操场。' },
+  ],
+  'g4down-u4': [
+    { type: '选择', stem: "— What does your father do on weekends? — He usually _____ housework.", options: ['do', 'does', 'doing', 'did'], answer: 'B', analysis: 'he 三单，do→does；does 既是助动词也是实义动词。' },
+    { type: '选择', stem: "She often _____ swimming on Saturdays.", options: ['go', 'goes', 'going', 'went'], answer: 'B', analysis: 'she 三单，go→goes（o 结尾加 es）。' },
+    { type: '选择', stem: "I usually visit my grandparents _____ Sundays.", options: ['in', 'on', 'at', 'by'], answer: 'B', analysis: 'on + 星期：on Sundays/on Sunday。' },
+    { type: '填空', before: "What d", after: " your mother do on weekends? (助动词)", answer: 'does', analysis: '主语 mother 三单，疑问句助动词 does。' },
+    { type: '填空', before: "We fly kites t", after: " on weekends. (一起)", answer: 'together', analysis: 'together 一起；fly kites 放风筝。' },
+  ],
+  'g4down-u5': [
+    { type: '选择', stem: "— When is Children's Day? — It's _____ June 1st.", options: ['in', 'on', 'at', 'by'], answer: 'B', analysis: 'on + 具体日期：on June 1st；in + 月份：in June。' },
+    { type: '选择', stem: "Spring Festival is in _____ or February.", options: ['January', 'March', 'April', 'May'], answer: 'A', analysis: '春节在1月或2月，January 一月。' },
+    { type: '选择', stem: "Teachers' Day is on September _____.", options: ['ten', 'tenth', 'one', 'first'], answer: 'B', analysis: '教师节9月10日；10 的序数词 tenth。' },
+    { type: '填空', before: "We eat d", after: " at Spring Festival. (饺子)", answer: 'dumplings', analysis: 'dumpling 饺子复数；at Spring Festival 春节期间。' },
+    { type: '填空', before: "When is N", after: " Day? (国庆节)", answer: 'National', analysis: 'National Day 国庆节；N 大写。' },
+  ],
+  'g4down-u6': [
+    { type: '选择', stem: "— Excuse me, where is the zoo? — It's _____ the park.", options: ['next', 'near', 'in', 'on'], answer: 'B', analysis: 'near 在附近；next 要加 to：next to。' },
+    { type: '选择', stem: "— How can I get to the hospital? — _____ left and go straight.", options: ['Turn', 'Go', 'Walk', 'Run'], answer: 'A', analysis: 'Turn left 左转，祈使句动词原形开头。' },
+    { type: '选择', stem: "The park is _____ to the post office.", options: ['near', 'next', 'in front', 'behind'], answer: 'B', analysis: 'next to 紧邻，固定搭配。' },
+    { type: '填空', before: "Excuse me, w", after: " is the bookstore? (哪里)", answer: 'where', analysis: 'where 哪里，疑问副词，问地点。' },
+    { type: '填空', before: "Turn right and go s", after: " . (直走)", answer: 'straight', analysis: 'straight 直地；go straight 直走。' },
+  ],
+
+  // ===== 五年级上册 =====
+  'g5up-u1': [
+    { type: '选择', stem: "— Where are you from? — I'm from _____.", options: ['the USA', 'USA', 'us', 'U.S.A'], answer: 'A', analysis: 'the USA 必须加 the；us 是 we 宾格。' },
+    { type: '选择', stem: "— Where is he from? — He _____ from Australia.", options: ['am', 'is', 'are', 'be'], answer: 'B', analysis: 'he 三单，be 动词用 is。' },
+    { type: '选择', stem: "Sydney Opera House is a _____ landmark.", options: ['famous', 'famouse', 'fame', 'famously'], answer: 'A', analysis: 'famous 著名的，形容词；拼写不是 famouse。' },
+    { type: '填空', before: "Tower Bridge is a famous landmark in the U", after: " . (英国)", answer: 'UK', analysis: 'the UK 英国，必须加 the；缩写大写。' },
+    { type: '填空', before: "China is a big c", after: " in the world. (国家)", answer: 'country', analysis: 'country 国家；a big country 一个大国。' },
+  ],
+  'g5up-u2': [
+    { type: '选择', stem: "— What's your father's _____? — He is a doctor.", options: ['work', 'job', 'do', 'name'], answer: 'B', analysis: 'job 工作；What\'s sb\'s job? 询问职业。' },
+    { type: '选择', stem: "He is _____ actor.", options: ['a', 'an', 'the', '/'], answer: 'B', analysis: 'actor 元音开头用 an；与 a teacher 区分。' },
+    { type: '选择', stem: "— What do you want to _____? — I want to be a pilot.", options: ['do', 'be', 'have', 'go'], answer: 'B', analysis: 'want to be 想成为...；be 动词原形。' },
+    { type: '填空', before: "My father is a w", after: " . He writes stories. (作家)", answer: 'writer', analysis: 'writer 作家；wr- 不发音 w；write→writer。' },
+    { type: '填空', before: "Lily's mother is a teacher. This is L", after: "'s classroom. (莉莉的)", answer: "Lily", analysis: "名词所有格 's：Lily's 莉莉的。" },
+  ],
+  'g5up-u3': [
+    { type: '选择', stem: "— Where does your mother work? — She _____ in a hospital.", options: ['work', 'works', 'working', 'worked'], answer: 'B', analysis: 'she 三单，work→works。' },
+    { type: '选择', stem: "My father works _____ a big factory.", options: ['on', 'in', 'at', 'by'], answer: 'B', analysis: 'in a factory 在工厂里；in 表示在内部。' },
+    { type: '选择', stem: "— Where _____ you work? — I work in a school.", options: ['do', 'does', 'is', 'are'], answer: 'A', analysis: '主语 you 复数，助动词用 do。' },
+    { type: '填空', before: "She works in an o", after: " . (办公室)", answer: 'office', analysis: 'office 办公室，双 f；in an office。' },
+    { type: '填空', before: "Pilots work at an a", after: " . (机场)", answer: 'airport', analysis: 'airport 机场；at an airport 在机场。' },
+  ],
+  'g5up-u4': [
+    { type: '选择', stem: "_____ your books in the box.", options: ['Put', 'Puts', 'Putting', 'To put'], answer: 'A', analysis: '祈使句动词原形开头，主语 you 省略。' },
+    { type: '选择', stem: "_____ put your toys on the desk.", options: ['Not', 'Don\'t', 'Doesn\'t', 'Isn\'t'], answer: 'B', analysis: '否定祈使句用 Don\'t + 动词原形。' },
+    { type: '选择', stem: "Please put things _____ order.", options: ['on', 'in', 'at', 'to'], answer: 'B', analysis: 'in order 整齐，固定搭配。' },
+    { type: '填空', before: "K", after: " your desk clean. (保持)", answer: 'Keep', analysis: 'keep 保持；Keep + 形容词。' },
+    { type: '填空', before: "Don't put the books o", after: " the desk. (在上面)", answer: 'on', analysis: 'on the desk 在桌上；in the box 在盒子里。' },
+  ],
+  'g5up-u5': [
+    { type: '选择', stem: "— Whose bedroom is this? — It's _____.", options: ['Lily', 'Lilys', 'Lily\'s', 'Lilys\''], answer: 'C', analysis: '名词所有格 \'s：Lily\'s 莉莉的。' },
+    { type: '选择', stem: "There _____ a sofa in the living room.", options: ['is', 'are', 'am', 'be'], answer: 'A', analysis: 'There is + 单数名词；There are + 复数。' },
+    { type: '选择', stem: "— _____ bedroom is this? — It's Tom's.", options: ['Who', 'Who\'s', 'Whose', 'Whos'], answer: 'C', analysis: 'Whose 谁的；Who\'s 是 who is 缩写。' },
+    { type: '填空', before: "The room is clean and t", after: " . (整洁的)", answer: 'tidy', analysis: 'tidy 整洁；clean and tidy 干净又整洁。' },
+    { type: '填空', before: "Our kitchen is on the first f", after: " . (楼层)", answer: 'floor', analysis: 'floor 楼层；on the first floor 在一楼。' },
+  ],
+  'g5up-u6': [
+    { type: '选择', stem: "I'm active _____ clever.", options: ['and', 'but', 'or', 'so'], answer: 'A', analysis: 'and 连接并列形容词；but 转折。' },
+    { type: '选择', stem: "_____ be shy! Be yourself!", options: ['Not', 'Don\'t', 'Doesn\'t', 'No'], answer: 'B', analysis: '否定祈使句 Don\'t + be + 形容词。' },
+    { type: '选择', stem: "Believe in _____.", options: ['you', 'your', 'yours', 'yourself'], answer: 'D', analysis: 'believe in yourself 相信自己；反身代词。' },
+    { type: '填空', before: "Don't be s", after: " . Please speak loudly. (害羞的)", answer: 'shy', analysis: 'shy 害羞；Don\'t be + 形容词。' },
+    { type: '填空', before: "We are all d", after: " . Everyone is special. (不同的)", answer: 'different', analysis: 'different 不同的；be + 形容词。' },
+  ],
+
+  // ===== 五年级下册 =====
+  'g5down-u1': [
+    { type: '选择', stem: "— Where is your classroom? — It's _____ the first floor.", options: ['in', 'on', 'at', 'by'], answer: 'B', analysis: '楼层用 on 不用 in：on the first floor。' },
+    { type: '选择', stem: "— Welcome _____ our school! — Thank you.", options: ['to', 'in', 'at', 'for'], answer: 'A', analysis: 'Welcome to + 地点，欢迎到...来。' },
+    { type: '选择', stem: "Our library is on the _____ floor.", options: ['one', 'first', 'two', 'second'], answer: 'D', analysis: '序数词 second 第二；the + 序数词。' },
+    { type: '填空', before: "We often borrow books from the l", after: " . (图书馆)", answer: 'library', analysis: 'library 图书馆；变复数 libraries（y 变 i 加 es）。' },
+    { type: '填空', before: "We have a meeting in the meeting r", after: " . (房间)", answer: 'room', analysis: 'meeting room 会议室；room 房间。' },
+  ],
+  'g5down-u2': [
+    { type: '选择', stem: "— _____ is it? — It's ten yuan.", options: ['How many', 'How much', 'How old', 'How long'], answer: 'B', analysis: 'How much 问价格；How many 问数量。' },
+    { type: '选择', stem: "— Can I help you? — Yes, I want _____ a toy car.", options: ['buy', 'to buy', 'buying', 'buys'], answer: 'B', analysis: 'want to + 动词原形：want to buy 想买。' },
+    { type: '选择', stem: "Can I try the shoes _____?", options: ['in', 'on', 'at', 'to'], answer: 'B', analysis: 'try on 试穿；代词放中间 try them on。' },
+    { type: '填空', before: "These trousers are too e", after: " . (昂贵的)", answer: 'expensive', analysis: 'expensive 昂贵；too expensive 太贵。' },
+    { type: '填空', before: "This dress looks p", after: " . I like it. (漂亮的)", answer: 'pretty', analysis: 'pretty 漂亮；look + 形容词。' },
+  ],
+  'g5down-u3': [
+    { type: '选择', stem: "We _____ obey the rules at school.", options: ['should', 'should to', 'shoulding', 'shoulded'], answer: 'A', analysis: 'should + 动词原形；should 后不加 to 不加 ing。' },
+    { type: '选择', stem: "You _____ be late for school.", options: ['should', 'shouldn\'t', 'must', 'can'], answer: 'B', analysis: 'shouldn\'t 不应该；上学不应迟到。' },
+    { type: '选择', stem: "You _____ cross the street when the light is red.", options: ['must', 'mustn\'t', 'should', 'can'], answer: 'B', analysis: 'mustn\'t 禁止；红灯禁止过马路。' },
+    { type: '填空', before: "We should keep q", after: " in class. (安静)", answer: 'quiet', analysis: 'keep quiet 保持安静；quiet 形容词。' },
+    { type: '填空', before: "You must w", after: " for the green light. (等待)", answer: 'wait', analysis: 'wait for 等待；must + 动词原形。' },
+  ],
+  'g5down-u4': [
+    { type: '选择', stem: "— What's wrong with you? — I have a _____.", options: ['headache', 'headaches', 'the headache', 'a headache'], answer: 'A', analysis: 'have a + 疾病：have a headache 头痛。' },
+    { type: '选择', stem: "He _____ a fever yesterday.", options: ['have', 'has', 'had', 'having'], answer: 'C', analysis: '主语 he 三单 + 过去时 yesterday，用 had。' },
+    { type: '选择', stem: "You should _____ some medicine.", options: ['take', 'eat', 'drink', 'have'], answer: 'A', analysis: 'take medicine 吃药，固定搭配。' },
+    { type: '填空', before: "I have a t", after: " . I should see a dentist. (牙痛)", answer: 'toothache', analysis: 'toothache 牙痛，tooth + ache 复合词。' },
+    { type: '填空', before: "You should drink more w", after: " and have a rest. (水)", answer: 'water', analysis: 'water 水，不可数；drink more water。' },
+  ],
+  'g5down-u5': [
+    { type: '选择', stem: "Look! I _____ my room.", options: ['clean', 'cleans', 'cleaning', 'am cleaning'], answer: 'D', analysis: 'Look! 提示现在进行时：be + doing。' },
+    { type: '选择', stem: "— What are you doing? — I _____ a story.", options: ['tell', 'tells', 'am telling', 'telling'], answer: 'C', analysis: '现在进行时：am/is/are + doing。' },
+    { type: '选择', stem: "Dad is _____ an email now.", options: ['write', 'writes', 'writing', 'wrote'], answer: 'C', analysis: 'write→writing 去 e 加 ing；is + writing。' },
+    { type: '填空', before: "Mum is w", after: " the clothes now. (洗)", answer: 'washing', analysis: 'wash→washing 去 e 加 ing。' },
+    { type: '填空', before: "Look! They are p", after: " football on the playground. (踢)", answer: 'playing', analysis: 'play→playing 直接加 ing；Look! 提示进行时。' },
+  ],
+  'g5down-u6': [
+    { type: '选择', stem: "We're _____ the football game.", options: ['watch', 'watching', 'watches', 'watched'], answer: 'B', analysis: 'be + doing：are + watching。' },
+    { type: '选择', stem: "The boys _____ playing basketball now.", options: ['is', 'are', 'am', 'be'], answer: 'B', analysis: '主语 boys 复数，be 动词用 are。' },
+    { type: '选择', stem: "— Are they doing the high jump? — No, they _____.", options: ['are', 'aren\'t', 'do', 'don\'t'], answer: 'B', analysis: '现在进行时疑问句用 be 动词，否定回答用 aren\'t。' },
+    { type: '填空', before: "He is r", after: " fast. He is the champion. (跑)", answer: 'running', analysis: 'run→running 双写 n；be + running。' },
+    { type: '填空', before: "They are c", after: " loudly for their team. (欢呼)", answer: 'cheering', analysis: 'cheer→cheering 直接加 ing；cheer for 为...欢呼。' },
+  ],
+
+  // ===== 六年级上册 =====
+  'g6up-u1': [
+    { type: '选择', stem: "I _____ visit my grandparents this weekend.", options: ['am going to', 'is going to', 'are going to', 'going to'], answer: 'A', analysis: '主语 I 用 am going to + 动词原形。' },
+    { type: '选择', stem: "— What _____ you do tomorrow? — I'm going to travel.", options: ['do', 'are', 'are going to', 'will going to'], answer: 'B', analysis: '疑问句 be 动词提前：What are you going to do?' },
+    { type: '选择', stem: "She will _____ to Beijing next week.", options: ['go', 'goes', 'going', 'went'], answer: 'A', analysis: 'will + 动词原形，不加 to 不加 ing。' },
+    { type: '填空', before: "I am g", after: " to travel to Sanya by plane. (打算)", answer: 'going', analysis: 'be going to + 动词原形；going to travel。' },
+    { type: '填空', before: "Will you go to the p", after: " tomorrow? (派对)", answer: 'party', analysis: 'party 派对；复数变 y 为 i 加 es：parties。' },
+  ],
+  'g6up-u2': [
+    { type: '选择', stem: "I _____ happy today.", options: ['feel', 'feels', 'feeling', 'felt'], answer: 'A', analysis: '主语 I，feel + 形容词；feel 动词原形。' },
+    { type: '选择', stem: "She looks _____. What's wrong with her?", options: ['sad', 'sadly', 'sadden', 'sadness'], answer: 'A', analysis: 'look + 形容词作表语；looks sad 看起来难过。' },
+    { type: '选择', stem: "I am proud _____ my son.", options: ['of', 'for', 'with', 'about'], answer: 'A', analysis: 'be proud of 为...自豪，固定搭配。' },
+    { type: '填空', before: "The news is e", after: " . We are excited. (令人兴奋的)", answer: 'exciting', analysis: 'exciting 修饰事物；excited 修饰人。' },
+    { type: '填空', before: "I feel t", after: " . I want to have a rest. (累的)", answer: 'tired', analysis: 'feel + 形容词；tired 累的。' },
+  ],
+  'g6up-u3': [
+    { type: '选择', stem: "First, we plant the seeds _____ the soil.", options: ['on', 'in', 'at', 'to'], answer: 'B', analysis: 'in the soil 在土壤里，in 表示在内部。' },
+    { type: '选择', stem: "Plants _____ water and sunlight.", options: ['need', 'needs', 'needing', 'needed'], answer: 'A', analysis: '客观事实用一般现在时；主语 plants 复数动词原形。' },
+    { type: '选择', stem: "We should take care _____ plants.", options: ['of', 'for', 'with', 'to'], answer: 'A', analysis: 'take care of 照顾，固定搭配。' },
+    { type: '填空', before: "Look at the green l", after: " on the trees. (叶子)", answer: 'leaves', analysis: 'leaf 复数 leaves，f 变 v 加 es。' },
+    { type: '填空', before: "We should w", after: " the flowers every day. (浇水)", answer: 'water', analysis: 'water 既是名词又是动词；water the flowers 浇花。' },
+  ],
+  'g6up-u4': [
+    { type: '选择', stem: "Spring is the _____ season.", options: ['one', 'first', 'two', 'second'], answer: 'B', analysis: 'first 第一；the + 序数词。' },
+    { type: '选择', stem: "— What's spring _____? — It's warm.", options: ['like', 'likes', 'look', 'look like'], answer: 'A', analysis: 'What\'s...like? 询问特征；答语用形容词。' },
+    { type: '选择', stem: "In winter, children make _____.", options: ['snowman', 'snowmen', 'a snowman', 'snowmans'], answer: 'B', analysis: 'snowman 复数 snowmen，man→men 不规则变化。' },
+    { type: '填空', before: "Children fly k", after: " in spring. (风筝)", answer: 'kites', analysis: 'kite 风筝复数；fly kites 放风筝。' },
+    { type: '填空', before: "We have summer h", after: " in July and August. (假期)", answer: 'holidays', analysis: 'holiday 假期复数；summer holidays 暑假。' },
+  ],
+  'g6up-u5': [
+    { type: '选择', stem: "Spring Festival is _____ January or February.", options: ['in', 'on', 'at', 'by'], answer: 'A', analysis: 'in + 月份；at Spring Festival 在春节期间。' },
+    { type: '选择', stem: "— When is Christmas? — It's _____ December 25th.", options: ['in', 'on', 'at', 'by'], answer: 'B', analysis: 'on + 具体日期；Christmas Day 在12月25日。' },
+    { type: '选择', stem: "Children get _____ at Christmas.", options: ['presents', 'present', 'a present', 'the present'], answer: 'A', analysis: 'presents 复数泛指礼物；get presents 收礼物。' },
+    { type: '填空', before: "We eat m", after: " at Mid-Autumn Festival. (月饼)", answer: 'moon cakes', analysis: 'moon cake 月饼复数；at Mid-Autumn Festival 中秋节期间。' },
+    { type: '填空', before: "How do people c", after: " the New Year? (庆祝)", answer: 'celebrate', analysis: 'celebrate 庆祝；ce-le-brate 拼写。' },
+  ],
+  'g6up-u6': [
+    { type: '选择', stem: "He is _____ and clever. He saved many people.", options: ['brave', 'shy', 'quiet', 'tired'], answer: 'A', analysis: 'brave 勇敢的；救人需要勇气。' },
+    { type: '选择', stem: "We should learn _____ heroes.", options: ['from', 'of', 'with', 'for'], answer: 'A', analysis: 'learn from 向...学习，固定搭配。' },
+    { type: '选择', stem: "There are many _____ in Chinese history.", options: ['hero', 'heros', 'heroies', 'heroes'], answer: 'D', analysis: 'hero 复数 heroes，o 前是辅音字母加 es。' },
+    { type: '填空', before: "He is a great h", after: " in our country. (英雄)", answer: 'hero', analysis: 'hero 英雄；复数 heroes。' },
+    { type: '填空', before: "We should learn from t", after: " . (他们)", answer: 'them', analysis: 'learn from them 向他们学习；them 是 they 宾格。' },
+  ],
+
+  // ===== 六年级下册 =====
+  'g6down-u1': [
+    { type: '选择', stem: "I _____ to Sanya last summer.", options: ['go', 'goes', 'went', 'going'], answer: 'C', analysis: 'last summer 过去时；go 过去式 went。' },
+    { type: '选择', stem: "— Did you have a good time? — Yes, I _____.", options: ['do', 'does', 'did', 'didn\'t'], answer: 'C', analysis: '过去时疑问句用 did，肯定回答 Yes, I did。' },
+    { type: '选择', stem: "She _____ at home yesterday.", options: ['is', 'was', 'were', 'are'], answer: 'B', analysis: 'yesterday 过去时；主语 she 单数用 was。' },
+    { type: '填空', before: "Yesterday I p", after: " football with my friends. (踢)", answer: 'played', analysis: 'play 过去式 played，规则加 ed。' },
+    { type: '填空', before: "We w", after: " very happy last weekend. (是)", answer: 'were', analysis: '主语 we 复数，过去时用 were。' },
+  ],
+  'g6down-u2': [
+    { type: '选择', stem: "Yesterday I _____ to the zoo and saw many animals.", options: ['go', 'goes', 'went', 'going'], answer: 'C', analysis: 'yesterday 过去时；went 是 go 过去式。' },
+    { type: '选择', stem: "She _____ a new book last night.", options: ['buy', 'buys', 'bought', 'buyed'], answer: 'C', analysis: 'buy 过去式 bought，不规则变化。' },
+    { type: '选择', stem: "— What did you do last weekend? — I _____ football.", options: ['play', 'played', 'playing', 'plays'], answer: 'B', analysis: 'did 后接动词原形，但陈述句中用过去式 played。' },
+    { type: '填空', before: "He t", after: " a photo of the beautiful flowers yesterday. (拍)", answer: 'took', analysis: 'take 过去式 took，不规则；take a photo 拍照。' },
+    { type: '填空', before: "I s", after: " a film with my parents last night. (看)", answer: 'saw', analysis: 'see 过去式 saw；see a film 看电影。' },
+  ],
+  'g6down-u3': [
+    { type: '选择', stem: "I _____ be a doctor when I grow up.", options: ['will', 'am going', 'won\'t to', 'will to'], answer: 'A', analysis: 'will + 动词原形，不加 to。' },
+    { type: '选择', stem: "— Will you go to the party? — No, I _____.", options: ['will', 'won\'t', 'don\'t', 'doesn\'t'], answer: 'B', analysis: 'will 的否定回答用 won\'t。' },
+    { type: '选择', stem: "What _____ you going to do this summer?", options: ['do', 'are', 'will', 'is'], answer: 'B', analysis: 'be going to 疑问句把 be 动词提前。' },
+    { type: '填空', before: "I w", after: " go to Beijing next week. (将)", answer: 'will', analysis: 'will + 动词原形；next week 是将来时间。' },
+    { type: '填空', before: "She won't c", after: " to school tomorrow. (来)", answer: 'come', analysis: 'won\'t + 动词原形；won\'t = will not。' },
+  ],
+  'g6down-u4': [
+    { type: '选择', stem: "I play football every day. (判断时态)", options: ['一般现在时', '现在进行时', '一般过去时', '一般将来时'], answer: 'A', analysis: 'every day 是一般现在时标志词。' },
+    { type: '选择', stem: "Look! They _____ basketball now.", options: ['play', 'are playing', 'played', 'will play'], answer: 'B', analysis: 'Look! + now 提示现在进行时。' },
+    { type: '选择', stem: "I _____ my homework yesterday.", options: ['do', 'did', 'am doing', 'will do'], answer: 'B', analysis: 'yesterday 过去时，用 did。' },
+    { type: '填空', before: "She usually g", after: " to school by bike. (去)", answer: 'goes', analysis: 'usually 一般现在时；主语 she 三单动词加 es。' },
+    { type: '填空', before: "We will t", after: " a trip next month. (旅行)", answer: 'take', analysis: 'will + 动词原形；take a trip 旅行。' },
+  ],
+  'g6down-u5': [
+    { type: '选择', stem: "First, I get up. _____, I have breakfast.", options: ['Next', 'Last', 'Finally', 'End'], answer: 'A', analysis: '顺序词：First → Next/Then → Finally。' },
+    { type: '选择', stem: "I like spring _____ it's warm.", options: ['but', 'so', 'because', 'and'], answer: 'C', analysis: 'because 表原因；so 表结果，两者不并用。' },
+    { type: '选择', stem: "I went to the park, _____ it rained.", options: ['and', 'but', 'so', 'because'], answer: 'B', analysis: 'but 转折；去公园 vs 下雨。' },
+    { type: '填空', before: "F", after: ", let me introduce myself. (首先)", answer: 'First', analysis: 'First 首先，首字母大写。' },
+    { type: '填空', before: "I was tired, s", after: " I went to bed early. (所以)", answer: 'so', analysis: 'so 所以，表结果；与 because 不能并用。' },
+  ],
+  'g6down-u6': [
+    { type: '选择', stem: "— _____ do you go to school? — By bike.", options: ['What', 'Where', 'How', 'When'], answer: 'C', analysis: 'How 问方式；by bike 是出行方式。' },
+    { type: '选择', stem: "— _____ is the book? — Ten yuan.", options: ['How many', 'How much', 'How old', 'How long'], answer: 'B', analysis: 'How much 问价格；十元是价格。' },
+    { type: '选择', stem: "Tom is _____ boy in our class.", options: ['tall', 'taller', 'the tallest', 'tallest'], answer: 'C', analysis: '三者以上比较用最高级：the tallest。' },
+    { type: '填空', before: "I am a s", after: " . I study in primary school. (学生)", answer: 'student', analysis: 'student 学生；study 学习。' },
+    { type: '填空', before: "My favourite s", after: " is English. (科目)", answer: 'subject', analysis: 'subject 科目；favourite subject 最喜欢的科目。' },
+  ],
+};
